@@ -19,13 +19,15 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
         console.log('Received Event: ' + id);
+        carregar_pagina('home');
     }
 };
+
+function carregar_pagina(pg) {
+    //document.getElementById("content").innerHTML='<object type="type/html" data="home.html" ></object>';
+    //window.location = "home.html";
+    $("#conteudo").load(pg + ".html", function () {
+        console.log('pagina carregada: ' + pg);
+    });
+}
