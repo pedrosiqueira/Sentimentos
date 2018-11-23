@@ -12,8 +12,8 @@
         * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
         * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
         * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-            * Enable inline JS: add 'unsafe-inline' to default-src
-            * Enable eval(): add 'unsafe-eval' to default-src
+          * Enable inline JS: add 'unsafe-inline' to default-src
+          * Enable eval(): add 'unsafe-eval' to default-src
         * Create your own at http://cspisawesome.com
         -->
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> 
@@ -24,14 +24,16 @@
     </head>
 
     <body>
-        <div id="conteudo" class="app">Carregando aplicativo...</div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="js/popper.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
+        <div id="conteudo" class="app">Carregando aplicativo...
+            <button type="button" class="btn btn-primary" onclick="carregar_pagina('home')">Abrir sem carregar</button>
+        </div>
+        <script src="cordova.js"></script>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/index.js"></script>
+        <script>
+                app.initialize();
         </script>
     </body>
 
