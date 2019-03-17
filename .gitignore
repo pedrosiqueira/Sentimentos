@@ -1,1 +1,6 @@
-/platforms/
+!/plugins
+!/plugins/android.json
+!/plugins/browser.json
+!/plugins/fetch.json
+plugins/*
+platforms/*

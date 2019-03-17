@@ -1,3 +1,5 @@
+var myVue = {};
+
 var app = {
     // Application Constructor
     initialize: function () {
@@ -16,18 +18,34 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
+        document.addEventListener("backbutton", onBackKeyDown);
+        carregarBanco();
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
         console.log('Received Event: ' + id);
-        carregar_pagina('home');
     }
 };
 
-function carregar_pagina(pg) {
-    //document.getElementById("content").innerHTML='<object type="type/html" data="home.html" ></object>';
-    //window.location = "home.html";
-    $("#conteudo").load(pg + ".html", function () {
-        console.log('pagina carregada: ' + pg);
+function onBackKeyDown() {
+    console.log("implementar função back");
+}
+
+function abrir(pg, params) {
+    if (!params)
+        params = {};
+    return new Promise((resolve, reject) => {
+        $("#conteudo").load(pg + ".html", function () {
+            initVue(params);
+            resolve();
+        });
     });
+}
+
+function initVue(d) {
+    myVue = new Vue({
+        el: '#conteudo',
+        data: d
+    });
+    console.log("vue iniciado");
 }

@@ -94,5 +94,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-sqlite-evcore-extbuild-free": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-sqlite-evcore-extbuild-free"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

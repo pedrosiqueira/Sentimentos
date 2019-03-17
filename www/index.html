@@ -16,24 +16,26 @@
           * Enable eval(): add 'unsafe-eval' to default-src
         * Create your own at http://cspisawesome.com
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> 
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" />--> 
 
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <!--<link href="https://unpkg.com/@ionic/core@latest/css/ionic.bundle.css" rel="stylesheet">-->
+        <link rel="stylesheet" href="css/ionic.min.css" />
+        <link rel="stylesheet" href="css/index.css" />
+        <title>Sentimentos</title>
     </head>
 
     <body>
-        <div id="conteudo" class="app">Carregando aplicativo...
-            <button type="button" class="btn btn-primary" onclick="carregar_pagina('home')">Abrir sem carregar</button>
-        </div>
+        <div id="conteudo">Carregando aplicativo...</div>
         <script src="cordova.js"></script>
         <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="js/all.js"></script>
+        <script src="js/vue.js"></script>
+        <!--<script src="https://unpkg.com/@ionic/core@latest/dist/ionic.js"></script>-->
+        <script src="js/ionic.min.js"></script>
         <script src="js/index.js"></script>
+        <script src="js/banco.js"></script>
         <script>
-                app.initialize();
+            app.initialize();
         </script>
     </body>
 
