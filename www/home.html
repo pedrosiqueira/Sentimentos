@@ -5,11 +5,11 @@
 <div class="content has-header padding">
     <p><canvas id="myCanvas" style="padding: 0; margin: auto; display: block;"></canvas></p>
     <p><input type="range" min="-100" max="100" value="100" class="myslider" id="myRange"></p>
-    <p style="text-align:center;"><button class="button button-balanced" @click="abrir('novo_registro', {sentimento:$('#myRange').val()});">Registrar Sentimento</button></p>
+    <p style="text-align:center;"><button class="button button-balanced" @click="novo_registro()">Registrar Sentimento</button></p>
 </div>
 
 <div class="tabs tabs-icon-top tabs-color-balanced">
-    <a class="tab-item active">
+    <a class="tab-item active" @click="calendario()">
         <i class="icon ion-calendar"></i>
         Calendário
     </a>
