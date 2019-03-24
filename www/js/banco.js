@@ -11,7 +11,7 @@ function carregarBanco() {
         console.log('Transaction ERROR: ' + error.message);
     }, function () {
         console.log("banco carregado!");
-        abrir("home");
+        abrir("calendario");
     });
 }
 

@@ -65,3 +65,7 @@ function formatDate(date) {
         day = '0' + day;
     return [year, month, day].join('-');
 }
+
+function calendario() {
+    abrir('calendario');
+}
