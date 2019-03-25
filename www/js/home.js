@@ -29,9 +29,9 @@ function init() {
     gEmojiEyeWidth = gEmojiEyeHeight * 2 / 3;
     gLineWidth = gEmojiEyeHeight / 2;
 
-
     $(document).on('input', '#myRange', function () {
         draw_emoji("myCanvas", $(this).val());
+        document.getElementById("myCanvas").style.backgroundColor = getColorForPercentage($(this).val() / 200 + 0.5);
     });
 
     draw_emoji("myCanvas", 100);

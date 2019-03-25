@@ -37,14 +37,14 @@
     "cordova-plugin-vibration": {
       "PACKAGE_NAME": "com.phonegap.helloworld"
     },
-    "cordova-sqlite-evcore-extbuild-free": {
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "com.phonegap.helloworld"
+    },
+    "cordova-sqlite-storage": {
       "PACKAGE_NAME": "com.phonegap.helloworld"
     }
   },
   "dependent_plugins": {
-    "cordova-plugin-compat": {
-      "PACKAGE_NAME": "com.phonegap.helloworld"
-    },
     "cordova-plugin-file": {
       "PACKAGE_NAME": "com.phonegap.helloworld"
     }

@@ -2,6 +2,9 @@
     "elements": {},
     "attributes": {
         "v-bind:value": {},
+        "v-bind:style": {},
+        "v-if": {},
+        "v-for": {},
         "click": {}
     }
 }

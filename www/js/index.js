@@ -1,5 +1,11 @@
 var myVue = {};
 
+var percentColors = [
+    {pct: 0.0, color: {r: 0xff, g: 0x00, b: 0}},
+    {pct: 0.5, color: {r: 0xff, g: 0xff, b: 0}},
+    {pct: 1.0, color: {r: 0x00, g: 0xff, b: 0}}
+];
+
 var app = {
     // Application Constructor
     initialize: function () {
@@ -19,6 +25,11 @@ var app = {
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
         document.addEventListener("backbutton", onBackKeyDown);
+        if (window.cordova.platformId === 'browser') {//componentes ionic nao rolam no browser, precisa adicionar essa propriedade pra permitir rolager
+            //Scrolling in browser in an Ionic Project
+            console.log("excutando pelo browser");
+            document.getElementById("conteudo").style.overflow = "auto";
+        }
         carregarBanco();
     },
     // Update DOM on a Received Event
@@ -34,7 +45,7 @@ function onBackKeyDown() {
 function abrir(pg, params) {
     if (!params)
         params = {};
-    return new Promise((resolve, reject) => {
+    return new Promise(function (resolve, reject) {
         $("#conteudo").load(pg + ".html", function () {
             initVue(params);
             resolve();
@@ -66,6 +77,43 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
-function calendario() {
-    abrir('calendario');
+function randomDate(date1, date2) {
+    return new Date(getRandomIntInclusive(Date.parse(date1), Date.parse(date2)));
+}
+
+function getRandomIntInclusive(min, max) {
+    if (min > max) {
+        var aux = min;
+        min = max;
+        max = aux;
+    }
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getMes(date) {
+    var meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+    return meses[date.substr(5, 2) - 1];
+}
+
+function getColorForPercentage(pct) {
+    for (var i = 1; i < percentColors.length - 1; i++) {
+        if (pct < percentColors[i].pct) {
+            break;
+        }
+    }
+    var lower = percentColors[i - 1];
+    var upper = percentColors[i];
+    var range = upper.pct - lower.pct;
+    var rangePct = (pct - lower.pct) / range;
+    var pctLower = 1 - rangePct;
+    var pctUpper = rangePct;
+    var color = {
+        r: Math.floor(lower.color.r * pctLower + upper.color.r * pctUpper),
+        g: Math.floor(lower.color.g * pctLower + upper.color.g * pctUpper),
+        b: Math.floor(lower.color.b * pctLower + upper.color.b * pctUpper)
+    };
+    return 'rgb(' + [color.r, color.g, color.b].join(',') + ')';
+    // or output as hex if preferred
 }

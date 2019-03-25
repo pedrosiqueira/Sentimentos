@@ -22,15 +22,15 @@
         </label>
         <label class="item item-input item-stacked-label">
             <span class="input-label balanced">Quando foi?</span>
-            <input id='quando' type="date" v-bind:value="quando" v-bind:max="quando"><br><br>
+            <input id='quando' type="date" v-bind:value="quando" v-bind:max="quando">
         </label>
         <input id='pontuacao' type='hidden' v-bind:value='pontuacao'>
     </div>
     <div style="text-align:right">
-        <button class="button button-balanced" @click='salvar_registro()'>
+        <button class="button button-balanced" onclick='salvar_registro()'>
             Salvar
         </button>
-        <button class="button button-balanced" @click="abrir('home')">
+        <button class="button button-balanced" onclick="abrir('home')">
             Descartar
         </button>
     </div>

@@ -1,0 +1,31 @@
+<div class="bar bar-header has-tabs-top bar-balanced">
+    <button class="button button-icon icon ion-android-arrow-back" onclick="abrir('home')"></button>
+    <h1 class="title">Meus Sentimentos</h1>
+</div>
+
+<div class="tabs-striped tabs-top tabs-background-balanced tabs-color-light">
+    <div class="tabs tabs-icon-top">
+        <a class="tab-item" href="#">
+            <i class="icon ion-calendar"></i>
+            Mês
+        </a>
+        <a class="tab-item active" href="#">
+            <i class="icon fas fa-clipboard-list"></i>
+            Lista
+        </a>
+    </div>
+</div>
+
+<div class="content has-header has-tabs-top padding">
+    <div class="list">
+        <template v-for='(s, i) in sentimentos'>
+            <div v-if='i==0 || s.quando.substr(0,7) < sentimentos[i-1].quando.substr(0,7)' class="item item-divider">
+                {{getMes(s.quando)}}
+            </div>
+            <a class="item" href="#" >
+                <span class='inCircle' style="color: black" v-bind:style="{ backgroundColor: getColorForPercentage(s.pontuacao / 200 + 0.5) }">{{s.quando.substr(8,2)}}</span> {{s.acontecido}}
+            </a>
+        </template>
+    </div>
+    <button class="button button-balanced icon ion-chevron-down" onclick='carregar_mais_sentimentos()'></button>
+</div>
