@@ -14,7 +14,7 @@ var gEmojiEyeWidth;
 
 var gLineWidth;
 
-function init() {
+function init_home() {
     let c = document.getElementById("myCanvas");
     let ctx = c.getContext("2d");
     let menor = window.innerWidth < window.innerHeight ? window.innerWidth : window.innerHeight;
@@ -166,7 +166,3 @@ function ellipse(ctx, cx, cy, rx, ry)
     ctx.closePath();
     ctx.restore();
 }
-
-$(function () {
-    init();
-});

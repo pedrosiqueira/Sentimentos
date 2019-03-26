@@ -48,6 +48,9 @@ function abrir(pg, params) {
     return new Promise(function (resolve, reject) {
         $("#conteudo").load(pg + ".html", function () {
             initVue(params);
+            if (typeof window["init_" + pg] === "function") {//se existir uma funcao pra inicializar a pagina, execute-a
+                window["init_" + pg]();
+            }
             resolve();
         });
     });
@@ -97,6 +100,10 @@ function getMes(date) {
     return meses[date.substr(5, 2) - 1];
 }
 
+function dateToString(date) {
+    return date.substr(8, 2) + " de " + getMes(date);
+}
+
 function getColorForPercentage(pct) {
     for (var i = 1; i < percentColors.length - 1; i++) {
         if (pct < percentColors[i].pct) {
@@ -116,4 +123,14 @@ function getColorForPercentage(pct) {
     };
     return 'rgb(' + [color.r, color.g, color.b].join(',') + ')';
     // or output as hex if preferred
+}
+
+function descartar_alteracao() {
+    myVue.sentimento.sentimento = myVue.original.sentimento;
+    myVue.sentimento.acontecido = myVue.original.acontecido;
+    myVue.sentimento.pensamento = myVue.original.pensamento;
+    myVue.sentimento.atitude = myVue.original.atitude;
+    myVue.sentimento.quando = myVue.original.quando;
+    myVue.sentimento.pontuacao = myVue.original.pontuacao;
+    myVue.editando = false;
 }

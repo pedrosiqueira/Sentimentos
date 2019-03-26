@@ -3,9 +3,11 @@
 </div>
 
 <div class="content has-header padding">
-    <p><canvas id="myCanvas" style="padding: 0; margin: auto; display: block;"></canvas></p>
-    <p><input type="range" min="-100" max="100" value="100" class="myslider" id="myRange"></p>
-    <p style="text-align:center;"><button class="button button-balanced" onclick="novo_registro()">Registrar Sentimento</button></p>
+    <div><canvas id="myCanvas" style="padding: 0; margin: auto; display: block;"></canvas></div>
+    <div class="item range">
+        <input type="range" min="-100" max="100" value="100" id="myRange">
+    </div>
+    <div style="text-align:center;"><button class="button button-balanced" onclick="novo_registro()">Registrar Sentimento</button></div>
 </div>
 
 <div class="tabs tabs-icon-top tabs-color-balanced">
@@ -22,5 +24,3 @@
         Configurações
     </a>
 </div>
-
-<script src="js/home.js"></script>

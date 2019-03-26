@@ -5,6 +5,7 @@
         "v-bind:style": {},
         "v-if": {},
         "v-for": {},
+        "v-bind:readonly": {},
         "click": {}
     }
 }

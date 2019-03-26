@@ -67,3 +67,31 @@ function carregar_mais_sentimentos() {
         });
     });
 }
+
+function carregar_sentimento(id) {
+    db.transaction(function (tx) {
+        tx.executeSql("SELECT rowid, * FROM Sentimento WHERE rowid = ?;", [id], function (tx, resultSet) {
+            if (resultSet.rows.length) {
+                var s = resultSet.rows.item(0);
+                var o = {sentimento: s.sentimento, acontecido: s.acontecido, pensamento: s.pensamento, atitude: s.atitude, pontuacao: s.pontuacao, quando: s.quando};//criada uma copia do sentimento
+                abrir('sentimento', {sentimento: s, editando: false, original: o});
+            }
+        });
+    });
+}
+
+function salvar_alteracao() {
+    db.transaction(function (tx) {
+        tx.executeSql("UPDATE Sentimento SET sentimento = ? , acontecido = ? , pensamento = ? , atitude = ? , pontuacao = ? , quando = ? WHERE rowid = ?;", [myVue.sentimento.sentimento, myVue.sentimento.acontecido, myVue.sentimento.pensamento, myVue.sentimento.atitude, myVue.sentimento.pontuacao, myVue.sentimento.quando, myVue.sentimento.rowid], function (tx, res) {
+            carregar_sentimentos();
+        });
+    });
+}
+
+function apagar_sentimento() {
+    db.transaction(function (tx) {
+        tx.executeSql("DELETE FROM Sentimento WHERE rowid = ?;", [myVue.sentimento.rowid], function (tx, res) {
+            carregar_sentimentos();
+        });
+    });
+}

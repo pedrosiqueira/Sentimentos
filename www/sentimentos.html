@@ -22,7 +22,7 @@
             <div v-if='i==0 || s.quando.substr(0,7) < sentimentos[i-1].quando.substr(0,7)' class="item item-divider">
                 {{getMes(s.quando)}}
             </div>
-            <a class="item" href="#" >
+            <a class="item" href="#" @click="carregar_sentimento(s.rowid)">
                 <span class='inCircle' style="color: black" v-bind:style="{ backgroundColor: getColorForPercentage(s.pontuacao / 200 + 0.5) }">{{s.quando.substr(8,2)}}</span> {{s.acontecido}}
             </a>
         </template>
