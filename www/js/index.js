@@ -25,11 +25,6 @@ var app = {
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
         document.addEventListener("backbutton", onBackKeyDown);
-        if (window.cordova.platformId === 'browser') {//componentes ionic nao rolam no browser, precisa adicionar essa propriedade pra permitir rolager
-            //Scrolling in browser in an Ionic Project
-            console.log("excutando pelo browser");
-            document.getElementById("conteudo").style.overflow = "auto";
-        }
         carregarBanco();
     },
     // Update DOM on a Received Event

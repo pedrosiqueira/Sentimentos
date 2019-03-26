@@ -1,26 +1,32 @@
-<div class="bar bar-header bar-balanced">
-    <h1 class="title">Sentimentos</h1>
-</div>
+<nav class="navbar navbar-dark bg-success sticky-top justify-content-center">
+    <span class="navbar-brand mb-0 h1">Diário de Sentimentos</span>
+</nav>
 
-<div class="content has-header padding">
-    <div><canvas id="myCanvas" style="padding: 0; margin: auto; display: block;"></canvas></div>
-    <div class="item range">
+<div class="text-center">
+    <div>
+        <canvas id="myCanvas"></canvas>
+    </div>
+    <div>
         <input type="range" min="-100" max="100" value="100" id="myRange">
     </div>
-    <div style="text-align:center;"><button class="button button-balanced" onclick="novo_registro()">Registrar Sentimento</button></div>
+    <div>
+        <button class="btn btn-success" onclick="novo_registro()">Adicionar Sentimento</button>
+    </div>
 </div>
 
-<div class="tabs tabs-icon-top tabs-color-balanced">
-    <a class="tab-item active" onclick="carregar_sentimentos()">
-        <i class="icon ion-calendar"></i>
-        Sentimentos
-    </a>
-    <a class="tab-item active">
-        <i class="icon ion-navicon-round"></i>
-        Informações
-    </a>
-    <a class="tab-item active">
-        <i class="icon ion-gear-a"></i>
-        Configurações
-    </a>
-</div>
+<nav class="navbar fixed-bottom navbar-expand border-top border-success">
+    <div class="navbar-nav text-center justify-content-around">
+        <a class="nav-item nav-link text-success py-0" href="#" onclick="carregar_sentimentos()">
+            <i class="far fa-calendar fa-lg"></i>
+            <div class="small">Sentimentos</div>
+        </a>
+        <a class="nav-item nav-link text-success py-0" href="#">
+            <i class="fas fa-info fa-lg"></i>
+            <div class="small">Informações</div>
+        </a>
+        <a class="nav-item nav-link text-success py-0" href="#">
+            <i class="fas fa-cog fa-lg"></i>
+            <div class="small">Configurações</div>
+        </a>
+    </div>
+</nav>

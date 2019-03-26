@@ -1,21 +1,11 @@
-body {
-    background-color: rgb(255,250,250);
-    color: #33cd5f;
-}
-
-.bar{
-    background-color: rgb(255,250,250);
-}
-
-.tabs{
-    background-color: rgb(255,250,250);
-}
-
-.has-header { margin-bottom:100%; }
-
 .inCircle {
     border-radius: 50%;
     padding: 1%;
     border: 2px solid #666;
     font-size: 150%;
+}
+
+/* gambiarra pra distribuir horizontalmente os itens de um navbar */
+.navbar-nav.justify-content-around {
+    flex: 1;
 }
