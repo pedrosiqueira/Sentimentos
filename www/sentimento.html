@@ -1,45 +1,69 @@
-<div class="bar bar-header bar-balanced">
-    <button class="button button-icon icon ion-android-arrow-back" onclick="carregar_sentimentos()"></button>
-    <h1 class="title">Meu Sentimento</h1>
-    <div class="buttons">
-        <button class="button icon ion-edit" onclick="myVue.editando = !myVue.editando;"></button>
-        <button class="button icon ion-trash-a" onclick="apagar_sentimento()"></button>
+<nav class="navbar navbar-expand navbar-dark bg-success sticky-top">
+    <a class="navbar-brand abs" href="#">Meu Sentimento</a>
+    <div class="navbar-nav">
+        <a class="nav-item nav-link active " onclick="carregar_sentimentos()">
+            <i class="fas fa-chevron-left fa-fw"></i>
+        </a>
+    </div>
+    <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link active " onclick="myVue.editando = !myVue.editando">
+            <i class="fas fa-edit fa-fw"></i>
+        </a>
+        <a class="nav-item nav-link active " data-toggle="modal" data-target="#modalApagar">
+            <i class="fas fa-trash-alt fa-fw"></i>
+        </a>
+    </div>
+</nav>
 
-    </div>
-</div>
-<div class="content has-header padding">
-    <div class="list">
-        <label class="item item-input item-stacked-label">
-            <span class="input-label balanced">Como você se sente (sentiu)?</span>
-            <input id='sentimento' type="text" v-bind:readonly="!editando" placeholder="#angustiado, #envergonhado, #humilhado, #raiva" v-model="sentimento.sentimento">
-        </label>
-        <label class="item item-input item-stacked-label">
-            <span class="input-label balanced">O que aconteceu?</span>
-            <textarea id='acontecido' v-bind:readonly="!editando" rows="2" style='width: 100%' placeholder='O que te deixou assim??' v-model="sentimento.acontecido"></textarea>
-        </label>
-        <label class="item item-input item-stacked-label">
-            <span class="input-label balanced">O que você pensou logo depois?</span>
-            <textarea id='pensamento' v-bind:readonly="!editando" rows="2" style='width: 100%' placeholder='Pensou que era real? Correto? Errado?' v-model="sentimento.pensamento"></textarea>
-        </label>
-        <label class="item item-input item-stacked-label">
-            <span class="input-label balanced">Qual foi sua atitude? Ou será?</span>
-            <textarea id='atitude' v-bind:readonly="!editando" rows="2" style='width: 100%' placeholder='Chorar? Rir? Correr? Fugir?' v-model="sentimento.atitude"></textarea>
-        </label>
-        <label class="item item-input item-stacked-label">
-            <span class="input-label balanced">Quando foi?</span>
-            <input id='quando' v-bind:readonly="!editando" type="date" v-model="sentimento.quando" v-bind:max="new Date().toISOString().split('T')[0]">
-        </label>
-        <div class="item range item-stacked-label">
-            <span class="input-label balanced">Humorômetro</span>
-            <input id='pontuacao' type="range" min="-100" max="100" v-bind:disabled="!editando" v-model='sentimento.pontuacao' v-bind:style="{ backgroundColor: getColorForPercentage(sentimento.pontuacao / 200 + 0.5) }">
+<div class="container-fluid">
+    <form>
+        <div class="form-group">
+            <label for="sentimento">Como você se sente (sentiu)?</label>
+            <input type="text" class="form-control" id="sentimento" placeholder="#angustiado, #envergonhado, #humilhado, #raiva" v-bind:readonly="!editando" v-model="sentimento.sentimento">
         </div>
-    </div>
+        <div class="form-group">
+            <label for="acontecido">O que aconteceu?</label>
+            <textarea class="form-control" id='acontecido' rows="2" placeholder='O que te deixou assim??' v-bind:readonly="!editando" v-model="sentimento.acontecido"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="pensamento">O que você pensou logo depois?</label>
+            <textarea class="form-control" id='pensamento' rows="2" placeholder='Pensou que era real? Correto? Errado?' v-bind:readonly="!editando" v-model="sentimento.pensamento"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="atitude">Qual foi sua atitude? Ou será?</label>
+            <textarea class="form-control" id='atitude' rows="2" placeholder='Chorar? Rir? Correr? Fugir?' v-bind:readonly="!editando" v-model="sentimento.atitude"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="quando">Quando foi?</label>
+            <input type="date" class="form-control" id="quando" v-bind:readonly="!editando" v-model="sentimento.quando" v-bind:max="new Date().toISOString().split('T')[0]">
+        </div>
+        <div class="form-group">
+            <label for="pontuacao">Humorômetro</label>
+            <input type="range" class="form-control" id="pontuacao" min="-100" max="100" v-bind:disabled="!editando" v-model='sentimento.pontuacao' v-bind:style="{ backgroundColor: getColorForPercentage(sentimento.pontuacao / 200 + 0.5) }">
+        </div>
+    </form>
+
     <div style="text-align:right" v-if="editando">
-        <button class="button button-balanced" onclick='salvar_alteracao()'>
+        <button class="btn btn-success" onclick='salvar_alteracao()'>
             Salvar
         </button>
-        <button class="button button-balanced" onclick="descartar_alteracao()">
+        <button class="btn btn-success" onclick="descartar_alteracao()">
             Descartar
         </button>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalApagar" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                Tem certeza que quer apagar este sentimento?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="apagar_sentimento()">Apagar</button>
+            </div>
+        </div>
     </div>
 </div>

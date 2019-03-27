@@ -34,7 +34,7 @@ function popularTabelas() {
     });
 }
 
-function salvar_registro() {
+function salvar_sentimento() {
     var sentimento = [$('#sentimento').val(), $('#acontecido').val(), $('#pensamento').val(), $('#atitude').val(), $('#pontuacao').val(), $('#quando').val()];
     db.transaction(function (transaction) {
         transaction.executeSql('INSERT INTO Sentimento (sentimento, acontecido, pensamento, atitude, pontuacao, quando) VALUES (?,?,?,?,?,?)', sentimento);
@@ -89,9 +89,15 @@ function salvar_alteracao() {
 }
 
 function apagar_sentimento() {
-    db.transaction(function (tx) {
-        tx.executeSql("DELETE FROM Sentimento WHERE rowid = ?;", [myVue.sentimento.rowid], function (tx, res) {
-            carregar_sentimentos();
+    //a funcao modal('hide') é asincrono e serve para fechar o modal
+    //a funcao on('hidden.bs.modal', callback) chama a funcao callback quando o modal terminar de fechar
+    $('#modalApagar').modal('hide').on('hidden.bs.modal', function (e) {
+        //toda vez que apagamos um sentimento, registramos um evento. portanto desregistramos o evento logo apos ele ocorrer, para nao ser disparado multiplas vezes
+        $(this).off('hidden.bs.modal');//gambiarra hidden.bs.modal firing multiple times
+        db.transaction(function (tx) {
+            tx.executeSql("DELETE FROM Sentimento WHERE rowid = ?;", [myVue.sentimento.rowid], function (tx, res) {
+                carregar_sentimentos();
+            });
         });
     });
 }

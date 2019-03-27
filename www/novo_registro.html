@@ -1,37 +1,39 @@
-<div class="bar bar-header bar-balanced">
-    <h1 class="title">Olá! Que tal refletirmos um pouco?</h1>
-</div>
+<nav class="navbar navbar-expand navbar-dark bg-success sticky-top">
+    <a class="navbar-brand abs" href="#">Olá! Que tal refletirmos um pouco?</a>
+    <div class="navbar-nav">
+        <a class="nav-item nav-link active " onclick="abrir('home')">
+            <i class="fas fa-chevron-left fa-fw"></i>
+        </a>
+    </div>
+    <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link active " onclick="salvar_sentimento()">
+            <i class="fas fa-save fa-fw"></i>
+        </a>
+    </div>
+</nav>
 
-<div class="content has-header padding">
-    <div class="list">
-        <label class="item item-input item-stacked-label">
-            <span class="input-label balanced">Como você se sente (sentiu)?</span>
-            <input id='sentimento' type="text" placeholder="#angustiado, #envergonhado, #humilhado, #raiva">
-        </label>
-        <label class="item item-input item-stacked-label">
-            <span class="input-label balanced">O que aconteceu?</span>
-            <textarea id='acontecido' rows="2" style='width: 100%' placeholder='O que te deixou assim??'></textarea>
-        </label>
-        <label class="item item-input item-stacked-label">
-            <span class="input-label balanced">O que você pensou logo depois?</span>
-            <textarea id='pensamento' rows="2" style='width: 100%' placeholder='Pensou que era real? Correto? Errado?'></textarea>
-        </label>
-        <label class="item item-input item-stacked-label">
-            <span class="input-label balanced">Qual foi sua atitude? Ou será?</span>
-            <textarea id='atitude' rows="2" style='width: 100%' placeholder='Chorar? Rir? Correr? Fugir?'></textarea>
-        </label>
-        <label class="item item-input item-stacked-label">
-            <span class="input-label balanced">Quando foi?</span>
-            <input id='quando' type="date" v-bind:value="quando" v-bind:max="quando">
-        </label>
+<div class="container-fluid">
+    <form>
+        <div class="form-group">
+            <label for="sentimento">Como você se sente (sentiu)?</label>
+            <input type="text" class="form-control" id="sentimento" placeholder="#angustiado, #envergonhado, #humilhado, #raiva">
+        </div>
+        <div class="form-group">
+            <label for="acontecido">O que aconteceu?</label>
+            <textarea class="form-control" id='acontecido' rows="2" placeholder='O que te deixou assim??'></textarea>
+        </div>
+        <div class="form-group">
+            <label for="pensamento">O que você pensou logo depois?</label>
+            <textarea class="form-control" id='pensamento' rows="2" placeholder='Pensou que era real? Correto? Errado?'></textarea>
+        </div>
+        <div class="form-group">
+            <label for="atitude">Qual foi sua atitude? Ou será?</label>
+            <textarea class="form-control" id='atitude' rows="2" placeholder='Chorar? Rir? Correr? Fugir?'></textarea>
+        </div>
+        <div class="form-group">
+            <label for="quando">Quando foi?</label>
+            <input type="date" class="form-control" id="quando" v-bind:value="quando" v-bind:max="quando">
+        </div>
         <input id='pontuacao' type='hidden' v-bind:value='pontuacao'>
-    </div>
-    <div style="text-align:right">
-        <button class="button button-balanced" onclick='salvar_registro()'>
-            Salvar
-        </button>
-        <button class="button button-balanced" onclick="abrir('home')">
-            Descartar
-        </button>
-    </div>
+    </form>
 </div>

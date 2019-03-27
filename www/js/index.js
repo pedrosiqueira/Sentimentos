@@ -46,6 +46,7 @@ function abrir(pg, params) {
             if (typeof window["init_" + pg] === "function") {//se existir uma funcao pra inicializar a pagina, execute-a
                 window["init_" + pg]();
             }
+            initIndex();
             resolve();
         });
     });
@@ -63,6 +64,8 @@ function novo_registro() {
     abrir('novo_registro', {pontuacao: $('#myRange').val(), quando: formatDate()});
 }
 
+/* devolve string de date no formato 'yyyy-mm-dd'.
+ se date for nulo, devolve string da data atual */
 function formatDate(date) {
     var d = (date ? new Date(date) : new Date()),
             month = '' + (d.getMonth() + 1),
@@ -128,4 +131,13 @@ function descartar_alteracao() {
     myVue.sentimento.quando = myVue.original.quando;
     myVue.sentimento.pontuacao = myVue.original.pontuacao;
     myVue.editando = false;
+}
+
+
+function initIndex() {
+    /* permite que nav-links possam ser ativados ou desativados*/
+    $('.nav-link').on('click', function () {
+        $('.ativo').removeClass('ativo');
+        $(this).addClass('ativo');
+    });
 }

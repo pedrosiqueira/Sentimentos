@@ -3,9 +3,37 @@
     padding: 1%;
     border: 2px solid #666;
     font-size: 150%;
+    color: black;
 }
 
-/* gambiarra pra distribuir horizontalmente os itens de um navbar */
+/* para alinhar o navbar-brand no meio do navbar */
+.navbar-brand.abs
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    z-index: -1;
+}
+
+/* gambiarra pra distribuir horizontalmente os itens de um navbar-nav */
 .navbar-nav.justify-content-around {
     flex: 1;
 }
+
+body{
+    /* cor padrao do texto (bootstrap text-success)*/
+    color: #28a745;
+}
+
+/* adiciona uma linha invisivel no nav-link, que aparecerá quando ele ficar ativo */
+.nav-link::after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #28a745;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+/* faz aparecer a linha invisivel de um nav-link quando ele estiver ativo */
+.nav-link.ativo::after { transform: scaleX(1); }
