@@ -9,11 +9,11 @@
 
 <nav class="navbar navbar-expand border-bottom border-success">
     <div class="navbar-nav text-center justify-content-around">
-        <a class="nav-item nav-link text-success py-0" href="#">
+        <a class="nav-item nav-link text-success py-0" href="#" onclick="carregar_sentimentos_calendario()">
             <i class="far fa-calendar fa-lg"></i>
             <div class="small">Mês</div>
         </a>
-        <a class="nav-item nav-link ativo text-success py-0" href="#">
+        <a class="nav-item nav-link ativo text-success py-0" href="#" onclick="carregar_sentimentos_lista()">
             <i class="fas fa-list fa-lg"></i>
             <div class="small">Lista</div>
         </a>
@@ -21,15 +21,5 @@
 </nav>
 
 <div class="container">
-    <div class="list-group">
-        <template v-for='(s, i) in sentimentos'>
-            <a href="#" class="list-group-item list-group-item-success" v-if='i==0 || s.quando.substr(0,7) < sentimentos[i-1].quando.substr(0,7)'>{{getMes(s.quando)}}</a>
-            <a href="#" class="list-group-item list-group-item-action" @click="carregar_sentimento(s.rowid)">
-                <span class="inCircle" v-bind:style="{ backgroundColor: getColorForPercentage(s.pontuacao / 200 + 0.5) }">{{s.quando.substr(8,2)}}</span> {{s.acontecido}}
-            </a>
-        </template>
-    </div>
-    <div class="mt-2">
-        <button class="btn btn-success" onclick='carregar_mais_sentimentos()'><i class="fas fa-chevron-down"></i></button>
-    </div>
+    <div id = "sentimentos_conteudo"></div>
 </div>

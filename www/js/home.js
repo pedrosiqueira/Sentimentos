@@ -31,7 +31,7 @@ function init_home() {
 
     $(document).on('input', '#myRange', function () {
         draw_emoji("myCanvas", $(this).val());
-        document.getElementById("myCanvas").style.backgroundColor = getColorForPercentage($(this).val() / 200 + 0.5);
+        document.getElementById("myCanvas").style.backgroundColor = getColor($(this).val());
     });
 
     draw_emoji("myCanvas", 100);
@@ -96,7 +96,7 @@ function draw_tear(ctx)
 
 function draw_joyful_lips(ctx, joy)
 {
-    console.log("draw_joyful_lips with joy: ", joy);
+//    console.log("draw_joyful_lips with joy: ", joy);
     ctx.save();
     ctx.beginPath();
 

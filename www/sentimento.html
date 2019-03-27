@@ -38,8 +38,8 @@
             <input type="date" class="form-control" id="quando" v-bind:readonly="!editando" v-model="sentimento.quando" v-bind:max="new Date().toISOString().split('T')[0]">
         </div>
         <div class="form-group">
-            <label for="pontuacao">Humorômetro</label>
-            <input type="range" class="form-control" id="pontuacao" min="-100" max="100" v-bind:disabled="!editando" v-model='sentimento.pontuacao' v-bind:style="{ backgroundColor: getColorForPercentage(sentimento.pontuacao / 200 + 0.5) }">
+            <label for="humorometro">Humorômetro</label>
+            <input type="range" class="form-control" id="humorometro" min="-100" max="100" v-bind:disabled="!editando" v-model='sentimento.humorometro' v-bind:style="{ backgroundColor: getColor(sentimento.humorometro) }">
         </div>
     </form>
 

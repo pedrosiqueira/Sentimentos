@@ -1,0 +1,11 @@
+<div class="list-group">
+    <template v-for='(s, i) in sentimentos'>
+        <a href="#" class="list-group-item list-group-item-success" v-if='i==0 || s.quando.substr(0,7) < sentimentos[i-1].quando.substr(0,7)'>{{getMes(s.quando)}}</a>
+        <a href="#" class="list-group-item list-group-item-action" @click="carregar_sentimento(s.rowid)">
+            <span class="inCircle" v-bind:style="{ backgroundColor: getColor(s.humorometro) }">{{s.quando.substr(8,2)}}</span> {{s.acontecido}}
+        </a>
+    </template>
+</div>
+<div class="mt-2">
+    <button class="btn btn-success" onclick='carregar_mais_sentimentos()'><i class="fas fa-chevron-down"></i></button>
+</div>

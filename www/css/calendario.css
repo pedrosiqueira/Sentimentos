@@ -1,0 +1,34 @@
+.calendario {
+    background: rgba(255,250,250);
+}
+
+.calendario table {
+    width: 100%;
+    border: 1px solid #8FBC8F;
+    color: #444;
+}
+
+.calendario td {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #8FBC8F;
+    width: 14.28571429%;
+}
+
+.calendario td.not-current {
+    color: #c0c0c0;
+}
+
+.calendario td .today {
+    border-radius: 50%;
+    border: 2px solid black;
+    padding: 5%;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.calendario thead td {
+    border: none;
+    color: #28283b;
+    font-size: 1.5em;
+}

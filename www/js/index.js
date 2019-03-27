@@ -37,11 +37,21 @@ function onBackKeyDown() {
     console.log("implementar função back");
 }
 
+/* carrega o conteudo de pg dentro da div 'conteudo'. inicia uma nova instancia vue com data=params */
 function abrir(pg, params) {
+    return new Promise(function (resolve, reject) {
+        carregar_conteudo(pg, "conteudo", params).then(function () {
+            resolve();
+        });
+    });
+}
+
+/* carrega o conteudo de pg dentro da divId. inicia uma nova instancia vue com data=params */
+function carregar_conteudo(pg, divId, params) {
     if (!params)
         params = {};
     return new Promise(function (resolve, reject) {
-        $("#conteudo").load(pg + ".html", function () {
+        $("#" + divId).load(pg + ".html", function () {
             initVue(params);
             if (typeof window["init_" + pg] === "function") {//se existir uma funcao pra inicializar a pagina, execute-a
                 window["init_" + pg]();
@@ -57,11 +67,11 @@ function initVue(d) {
         el: '#conteudo',
         data: d
     });
-    console.log("vue iniciado");
+//    console.log("vue iniciado");
 }
 
 function novo_registro() {
-    abrir('novo_registro', {pontuacao: $('#myRange').val(), quando: formatDate()});
+    abrir('novo_registro', {humorometro: $('#myRange').val(), quando: formatDate()});
 }
 
 /* devolve string de date no formato 'yyyy-mm-dd'.
@@ -102,6 +112,20 @@ function dateToString(date) {
     return date.substr(8, 2) + " de " + getMes(date);
 }
 
+/**
+ * recebe um inteiro entre -100 e 100 e devolve uma cor entre vermelho e verde
+ * @param {type} n
+ * @returns {String}
+ */
+function getColor(n) {
+    return getColorForPercentage(n / 200 + 0.5);
+}
+
+/*
+ * recebe um decimal entre 0 e 1 e devolve uma cor entre vermelho e verde
+ * @param {type} pct
+ * @returns {String}
+ */
 function getColorForPercentage(pct) {
     for (var i = 1; i < percentColors.length - 1; i++) {
         if (pct < percentColors[i].pct) {
@@ -129,15 +153,17 @@ function descartar_alteracao() {
     myVue.sentimento.pensamento = myVue.original.pensamento;
     myVue.sentimento.atitude = myVue.original.atitude;
     myVue.sentimento.quando = myVue.original.quando;
-    myVue.sentimento.pontuacao = myVue.original.pontuacao;
+    myVue.sentimento.humorometro = myVue.original.humorometro;
     myVue.editando = false;
 }
 
-
+/* toda vez que carregarmos uma nova tela, executamos essa função */
 function initIndex() {
     /* permite que nav-links possam ser ativados ou desativados*/
-    $('.nav-link').on('click', function () {
-        $('.ativo').removeClass('ativo');
-        $(this).addClass('ativo');
-    });
+    $('.nav-link').on('click', alternaAtivo);
+}
+
+function alternaAtivo() {
+    $('.ativo').removeClass('ativo');
+    $(this).addClass('ativo');
 }
