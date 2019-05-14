@@ -37,3 +37,5 @@ body{
 
 /* faz aparecer a linha invisivel de um nav-link quando ele estiver ativo */
 .nav-link.ativo::after { transform: scaleX(1); }
+p{text-align: justify;
+}
