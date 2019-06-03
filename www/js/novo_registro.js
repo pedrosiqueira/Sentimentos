@@ -14,7 +14,7 @@ var gEmojiEyeWidth;
 
 var gLineWidth;
 
-function init_home() {
+function init_novo_registro() {
     let c = document.getElementById("myCanvas");
     let ctx = c.getContext("2d");
     let menor = window.innerWidth < window.innerHeight ? window.innerWidth : window.innerHeight;
@@ -29,7 +29,7 @@ function init_home() {
     gEmojiEyeWidth = gEmojiEyeHeight * 2 / 3;
     gLineWidth = gEmojiEyeHeight / 2;
 
-    $(document).on('input', '#myRange', function () {
+    $(document).on('input', '#humorometro', function () {
         draw_emoji("myCanvas", $(this).val());
         document.getElementById("myCanvas").style.backgroundColor = getColor($(this).val());
     });

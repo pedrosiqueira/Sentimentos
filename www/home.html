@@ -2,19 +2,28 @@
     <span class="navbar-brand mb-0 h1">Diário de Sentimentos</span>
 </nav>
 
-<div class="text-center mt-3">
-    <div>
-        <canvas id="myCanvas"></canvas>
-    </div>
-    <div>
-        <input type="range" min="-100" max="100" value="100" id="myRange">
-    </div>
-    <div>
-        <button class="btn btn-success mt-4" onclick="novo_registro()">Adicionar Sentimento</button>
+<div class="container">
+    <!--esse padding-bottom eh necessario pq o bootstrap sobrepõe o navbar fixed-bottom -->
+    <div class="row" style="padding-bottom:20%;">
+
+        <div class="text-center mt-3">
+            <div>
+                <a class="nav-item nav-link text-success py-0" href="#" onclick="novo_registro()">
+                    <img src="img/tartaruga_9532d00d89589af560f8e84a95908f73.png" width="50%"><br>
+                    <button class="btn btn-success mt-4" onclick="novo_registro()">Adicionar Sentimento</button>
+                </a>
+            </div>
+            <div>
+                <h3>Tartaruga George</h3>
+                <p>Aqui deve ter uma descrição da George o porquê escolhemos ela como mascote...</p>
+                <p>O quelônio era o último integrante da subespécie Chelonoidis nigra abingdoni e por décadas seus cuidadores tentaram fazer ele se reproduzir com fêmeas de uma espécie parecida. No entanto, George Solitário morreu no dia 24 de junho de 2012 sem deixar descendentes...</p>
+            </div>
+        </div>
     </div>
 </div>
 
-<nav class="navbar fixed-bottom navbar-expand border-top border-success">
+
+<nav class="navbar fixed-bottom navbar-expand border-top border-success" style="background-color: white;">
     <div class="navbar-nav text-center justify-content-around">
         <a class="nav-item nav-link text-success py-0" href="#" onclick="carregar_sentimentos()">
             <i class="far fa-calendar fa-lg"></i>

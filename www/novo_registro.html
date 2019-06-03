@@ -34,6 +34,10 @@
             <label for="quando">Quando foi?</label>
             <input type="date" class="form-control" id="quando" v-bind:value="quando" v-bind:max="quando">
         </div>
-        <input id='humorometro' type='hidden' v-bind:value='humorometro'>
+        <div class="form-group">
+            <label for="humorometro">Humorômetro</label>
+            <canvas id="myCanvas"></canvas>
+            <input type="range" class="form-control" id="humorometro" min="-100" max="100" v-model='humorometro' v-bind:style="{ backgroundColor: getColor(humorometro) }">
+        </div>
     </form>
 </div>

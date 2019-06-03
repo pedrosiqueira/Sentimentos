@@ -34,7 +34,7 @@ var app = {
 };
 
 function onBackKeyDown() {
-    console.log("implementar função back");
+    abrir('home');
 }
 
 /* carrega o conteudo de pg dentro da div 'conteudo'. inicia uma nova instancia vue com data=params */
@@ -46,7 +46,7 @@ function abrir(pg, params) {
     });
 }
 
-/* carrega o conteudo de pg dentro da divId. inicia uma nova instancia vue com data=params */
+/* carrega o conteudo de pg dentro da divId. inicia uma nova instancia vue com data=params. executa o script da pagina, se houver */
 function carregar_conteudo(pg, divId, params) {
     if (!params)
         params = {};
@@ -71,7 +71,7 @@ function initVue(d) {
 }
 
 function novo_registro() {
-    abrir('novo_registro', {humorometro: $('#myRange').val(), quando: formatDate()});
+    abrir('novo_registro', {humorometro: 100, quando: formatDate()});
 }
 
 /* devolve string de date no formato 'yyyy-mm-dd'.
