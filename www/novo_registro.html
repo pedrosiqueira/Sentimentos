@@ -1,14 +1,12 @@
 <nav class="navbar navbar-expand navbar-dark bg-success sticky-top">
     <a class="navbar-brand abs" href="#">Novo Sentimento</a>
     <div class="navbar-nav">
-        <a class="nav-item nav-link active " onclick="abrir('home')">
+        <a  class="nav-item nav-link active " data-toggle="modal" data-target="#modalApagar">
             <i class="fas fa-chevron-left fa-fw"></i>
         </a>
     </div>
     <div class="navbar-nav ml-auto">
-        <a class="nav-item nav-link active " onclick="salvar_sentimento()">
-            <i class="fas fa-save fa-fw"></i>
-        </a>
+
     </div>
 </nav>
 
@@ -35,11 +33,29 @@
             <input type="date" class="form-control" id="quando" v-bind:value="quando" v-bind:max="quando">
         </div>
         <center><div class="form-group">
-          <label for="humorometro">Humorômetro</label>
+          <label for="humorometro" style="margin-bottom:-4em;">Humorômetro</label>
               <p style="text-align:center;"></p>
             <canvas id="myCanvas"></canvas>
 
             <input type="range" class="form-control" id="humorometro" min="-100" max="100" v-model='humorometro' v-bind:style="{ backgroundColor: getColor(humorometro) }">
         </div>  </center>
     </form>
+<br><br><br>
+<nav class="navbar fixed-bottom navbar-expand" style="background-color: transparent;">
+    <img style="margin-left:16em;" src="img/ok.png" width="20%" height="20%" onclick="salvar_sentimento()"/>
+</nav>
+
+
+<div class="modal fade" id="modalApagar" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                Tem certeza que quer apagar este sentimento?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="fechar_modal('home');">Apagar</button>
+            </div>
+        </div>
+    </div>
 </div>

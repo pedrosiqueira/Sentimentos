@@ -6,12 +6,7 @@
         </a>
     </div>
     <div class="navbar-nav ml-auto">
-        <a class="nav-item nav-link active " onclick="myVue.editando = !myVue.editando">
-            <i class="fas fa-edit fa-fw"></i>
-        </a>
-        <a class="nav-item nav-link active " data-toggle="modal" data-target="#modalApagar">
-            <i class="fas fa-trash-alt fa-fw"></i>
-        </a>
+
     </div>
 </nav>
 
@@ -43,16 +38,17 @@
         </div>
     </form>
 
-    <div style="text-align:right" v-if="editando">
-        <button class="btn btn-success" onclick='salvar_alteracao()'>
-            Salvar
-        </button>
-        <button class="btn btn-success" onclick="descartar_alteracao()">
-            Descartar
-        </button>
-    </div>
 </div>
+<br><br><br>
+<nav class="navbar fixed-bottom navbar-expand" style="background-color: transparent;">
+    <img style="margin-left:13em;" src="img/ok.png" width="19%" height="19%" onclick="salvar_alteracao()" v-if="editando"/>
 
+    <img src="img/Cancel.png" width="19%" height="19%" onclick="descartar_alteracao()" v-if="editando"/>
+
+    <img style="margin-left:13em;" src="img/edit.png" width="19%" height="19%" onclick="myVue.editando = !myVue.editando" v-if="!editando"/>
+
+    <img src="img/delete.png" width="19%" height="19%" data-toggle="modal" data-target="#modalApagar" v-if="!editando"/>
+</nav>
 <!-- Modal -->
 <div class="modal fade" id="modalApagar" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">

@@ -167,3 +167,13 @@ function alternaAtivo() {
     $('.ativo').removeClass('ativo');
     $(this).addClass('ativo');
 }
+
+/*fecha o modal e abre a página pg*/
+function fechar_modal(pg) {
+    //a funcao modal('hide') é asincrono e serve para fechar o modal
+    //a funcao on('hidden.bs.modal', callback) chama a funcao callback quando o modal terminar de fechar
+    $('#modalApagar').modal('hide').on('hidden.bs.modal', function (e) {
+      $(this).off('hidden.bs.modal');//gambiarra hidden.bs.modal firing multiple times
+      abrir(pg);
+    });
+}
