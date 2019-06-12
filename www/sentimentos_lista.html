@@ -1,3 +1,4 @@
+<br>
 <div class="list-group">
     <template v-for='(s, i) in sentimentos'>
         <a href="#" class="list-group-item list-group-item-success" v-if='i==0 || s.quando.substr(0,7) < sentimentos[i-1].quando.substr(0,7)'>{{getMes(s.quando)}}</a>

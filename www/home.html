@@ -1,25 +1,16 @@
 <nav class="navbar navbar-dark bg-success sticky-top justify-content-center">
-    <span class="navbar-brand mb-0 h1">Diário de Sentimentos</span>
+    <span class="navbar-brand mb-0 h1"> Felling Me</span>
 </nav>
 
-<div class="container">
-    <!--esse padding-bottom eh necessario pq o bootstrap sobrepõe o navbar fixed-bottom -->
-    <div class="row" style="padding-bottom:20%;">
 
-        <div class="text-center mt-3">
-            <div>
-                <a class="nav-item nav-link text-success py-0" href="#" onclick="novo_registro()">
-                    <img src="img/tartaruga_9532d00d89589af560f8e84a95908f73.png" width="50%"><br>
-                    <button class="btn btn-success mt-4" onclick="novo_registro()">Adicionar Sentimento</button>
-                </a>
-            </div>
-            <div>
-              <p></p>
-                <p>George solitário era uma tartaruga de Galápagos considerado o último de sua espécie e viveu sozinho em uma reserva natural até a sua morte em 2012. Após isso, descobriram que ele não era o último, mas sim um entre vários que seriam resgatados. Você também não está sozinho, existem pessoas que se sentem como você e não é necessário que carregue tudo o que sente sem falar com ninguém.</p>
-            </div>
-        </div>
-    </div>
+<div class="text-center mt-3">
+           <div style="margin-top:6em;">
+                   <img data-toggle="modal" data-target="#modalApagar" src="img/tartaruga_9532d00d89589af560f8e84a95908f73.png" width="50%"><br>
+                   <button class="btn btn-success mt-4" onclick="novo_registro()">Como você está hoje?</button>
+           </div>
+
 </div>
+
 
 
 <nav class="navbar fixed-bottom navbar-expand border-top border-success" style="background-color: white;">
@@ -36,3 +27,16 @@
         </a>
     </div>
 </nav>
+
+<div class="modal fade" id="modalApagar" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align:justify;">
+                Olá! Eu estou aqui em nome de George solitário, ele era uma tartaruga de Galápagos considerado o último de sua espécie e viveu sozinho em uma reserva natural até a sua morte em 2012. Após isso, descobriram que ele não era o último, mas sim um entre vários que seriam resgatados. Você também não está sozinho, existem pessoas que se sentem como você e não é necessário que carregue tudo o que sente sem falar com ninguém :)
+            </div>
+            <div class="modal-footer">
+                <center><button type="button" class="btn btn-success" style="margin-right:8em;" onclick="fechar_modal();">Ok</button></center>
+            </div>
+        </div>
+    </div>
+</div>
